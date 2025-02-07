@@ -1,0 +1,56 @@
+#include<stdio.h>
+#include<stdlib.h>
+#define MAX_SIZE 100
+void insert(int *list,int *size)
+{
+    int pos, value;
+    printf("Enter position:");
+    scanf("%d",&pos);
+    printf("Enter value:");
+    scanf("%d",&value);
+    if(pos<0 || pos>*size || pos>MAX_SIZE)
+    printf("Invalid position !!!!!\n");
+    else if(pos == *size)
+    {
+        list[pos]=value;
+        (*size)++;
+        printf("Enter Inserted !!!!!!\n");
+    }
+}
+int main()
+{
+    int list[MAX_SIZE],size,i;
+    printf("Enter you need to wnat add in the list:");
+    scanf("%d",&size);
+    for(i=0; i<size; i++)
+    {
+        scanf("%d",&list[i]);
+    }
+    while(1)
+    {
+        printf("1. Insertion\n");
+        printf("2. Deletion\n");
+        printf("3. Searching\n");
+        printf("4. Traversing\n");
+        printf("5. Exit\n");
+        int choice;
+        printf("Enter Choice:");
+        scanf("%d",&choice);
+        switch(choice)
+        {
+            case 1:
+            break;
+            case 2: 
+            break;
+            case 3:
+            break;
+            case 4:
+            break;
+            case 5:
+            exit(0);
+            default:
+            printf("Invalid Choice!!!!!\n");
+        }
+    }
+    return 0;
+}
