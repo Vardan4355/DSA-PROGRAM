@@ -3,27 +3,51 @@
 #define MAX_SIZE 100
 void insert(int *list,int *size)
 {
-    int pos, value;
+    int pos, value,i;
     printf("Enter position:");
     scanf("%d",&pos);
     printf("Enter value:");
     scanf("%d",&value);
     if(pos<0 || pos>*size || pos>MAX_SIZE)
     printf("Invalid position !!!!!\n");
-    else if(pos == *size)
+    else
     {
-        list[pos]=value;
-        (*size)++;
-        printf("Enter Inserted !!!!!!\n");
-    }
-else
-    {
-        for(i=*size; i>pos; i--)
+        for(i = *size; i>pos; i--)
         {
             list[i] = list[i-1];
         }
         list[pos] = value;
+        (*size)++;
         printf("Element inserted !!!!\n");
+    }
+}
+void displayList(int *list, int size)
+{
+    int i;
+    printf("List elements are : \n");
+    for(i=0; i<size; i++)
+    {
+        printf("%d", list[i]);
+    }
+}
+void delete(int *list, int *size)
+{
+    int pos, i;
+    printf("Enter position:");
+    scanf("%d",&pos);
+    pos--;
+    if(pos<0 || pos>*size || pos>MAX_SIZE)
+    {
+        printf("Invalid position !!!!!\n");
+    }
+    else
+    {
+        for(i=pos; i<*size-1; i++)
+        {
+            list[i]=list[i+1];
+        }
+        (*size)--;
+            printf("Element Deleted !!!!!\n");
     }
 }
 int main()
@@ -54,12 +78,15 @@ int main()
             case 3:
             break;
             case 4:
+            displayList(list, size);
             break;
             case 5:
             exit(0);
             default:
             printf("Invalid Choice!!!!!\n");
         }
+        printf("\n");
+        system("pause");
     }
     return 0;
 }
