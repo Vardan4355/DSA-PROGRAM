@@ -16,6 +16,15 @@ void insert(int *list,int *size)
         (*size)++;
         printf("Enter Inserted !!!!!!\n");
     }
+else
+    {
+        for(i=*size; i>pos; i--)
+        {
+            list[i] = list[i-1];
+        }
+        list[pos] = value;
+        printf("Element inserted !!!!\n");
+    }
 }
 int main()
 {
