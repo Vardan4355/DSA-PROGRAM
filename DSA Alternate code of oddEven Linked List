@@ -1,0 +1,37 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct ListNode* oddEvenList(struct ListNode* head){
+    if(head == NULL){
+        return head;
+    
+    struct ListNode* odd=NULL, *head1;
+    struct ListNode* even=NULL, *head2;
+    int i=1;
+    while(head !=NULL){
+        if(i%2 == 1){
+            if(odd == NULL){
+                odd = head1 = head;
+            }
+            else{
+                odd->next = head;
+                odd = odd->next;
+            }
+        }
+        else{
+            if(even == NULL){
+                even = head2;
+                head2 = head;
+            }
+            else{
+                even->next = head;
+            }
+            i++;
+            head = head->next;
+        }
+        even->next=NULL;
+        odd->next = head2;
+        return head1;
+    }
+    return 0;
+}
+}
