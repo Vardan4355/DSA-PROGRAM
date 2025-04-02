@@ -1,5 +1,3 @@
-#include<stdio.h>
-#include<stdlib.h>
 struct ListNode* oddEvenList(struct ListNode* head){
     if(head == NULL){
         return head;
@@ -32,6 +30,3 @@ struct ListNode* oddEvenList(struct ListNode* head){
         odd->next = head2;
         return head1;
     }
-    return 0;
-}
-}
