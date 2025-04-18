@@ -7,14 +7,14 @@ int main(){
 
     char question[][100]={">>>   1. Who is the founder of Microsoft? ",
                           ">>>   2. Who is considered the father of the World Wide Web? ", 
-                          ">>>   3. What programming language was developed by James Gosling at Sun Microsystems? "};
-                          
+                          ">>>   3. What programming language was developed by James Gosling at Sun Microsystems? "
+                          ">>>   4. Which Language is known as the mother of all languages?"};
 
 
     char Options[][100]={"          A. Steve Jobs","          B. Bill Gates" , "          C. Mark Zuckerberg", "          D. Larry Page",
                         "          A. Bill Gates", "          B. Tim Berners-Lee", "          C. Steve Jobs", "          D. Larry Page",
-                        "          A. Java", "          B. Python", "          C. Ruby", "          D. C#"};
-
+                        "          A. Java", "          B. Python", "          C. Ruby", "          D. C#", "
+                        "          A. C", "           B. JAVA", "              C. PYTHON", "        D. C++"};
     char answer[3]={'B','B','A'};
 
     int numberofquestions=sizeof(question)/sizeof(question[0]);
