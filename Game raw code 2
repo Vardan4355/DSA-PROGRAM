@@ -481,9 +481,13 @@ void help()
     printf("\n    right option");
     printf("\n >> You will be asked questions continuously if you keep giving the right answers.");
     printf("\n >> No negative marking for wrong answers");
+    printf("\n >> You can quit the game at any time by pressing Q key");
+    printf("\n >> Youn can also reset the score by pressing R key");
+    printf("\n >> you can also view the highest score by pressinh V key");
+    printf("\n >> You can also view the help by pressing H key");
 
 	printf("\n\n\t*********************BEST OF LUCK*********************************");
-	printf("\n\n\t*****C PROGRAM QUIZ GAME is developed byDEEPAK SHARMA AP GOYAL SHIMLA UNIVERSITY********");}
+	printf("\n\n\t*****C PROGRAM QUIZ GAME is developed byVARDAAN SHARMA FROM MIET ********");}
 
 void edit_score(float score, char playernm[20])
 {
