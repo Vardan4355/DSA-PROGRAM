@@ -18,7 +18,7 @@ TreeNode* insert(TreeNode* root, int value){
      else if(value<root->data)
      root->left = insert(root->left, value);
      else
-     root->roght = insert(root->right, value);
+     root->right = insert(root->right, value);
      return root;
 }
 void preorder(TreeNode* root){
@@ -57,17 +57,52 @@ void levelorder(TreeNode* root){
     }
 }
 TreeNode* search(TreeNode* root, int target){
-   
+   if(root==NULL)
+   return NULL;
+   else if(root->data == target)
+   return root;
+   else if(target < root->data)
+   return search(root->left, target);
+   else
+   return search(root->right, target);
+} 
+TreeNode* findMin(TreeNode* root){
+    while(root->left != NULL){
+        root = root->left;
+    }
+    return root;
 }
-  
-void delete(TreeNode* root, int value){
+TreeNode* delete(TreeNode* root, int value){
      TreeNode* temp = search(root, value);
      if(temp == NULL)
         printf("Element Not found !!\n");
+        else if(value<root->data)
+        root->left = delete(root->left,value);
+        else if(value>root->data)
+        root->right = delete(root->right, value);
         else{
-           
+            if(root->left==NULL && root->right==NULL){ // Zero child
+                free(root);
+                return NULL;
+            }
+            else if(root->right==NULL){ // only one child(left)
+                TreeNode* temp = root->left;
+                free(root);
+                return temp;
+            }
+            else if(root->left==NULL){ // only one child(right)
+                TreeNode* temp = root->right;
+                free(root);
+                return temp;
+            }
+            else { // both child
+                TreeNode* temp = findMin(root->right); // find minimum in right subtree
+                root->data = temp->data; // replace with minimum value
+                delete(root->right, temp->data);// delete the minimum node
+                return root; // return the updated root
         }
-     }
+    }
+}
 int main(){
     TreeNode* root=NULL;
     int choice, value;
@@ -84,40 +119,49 @@ int main(){
         scanf("%d", &choice);
         switch(choice){
             case 1:
-                printf("Enter value to insert : ");
+                printf("Enter value to insert: ");
                 scanf("%d", &value);
                 root = insert(root, value);
                 break;
             case 2:
-                printf("\nPreorder Traversal  : ");
+                printf("Preorder Traversal: ");
                 preorder(root);
+                printf("\n");
                 break;
             case 3:
-                printf("\nInorder Traversal : ");
-                inorder(root);        
+                printf("Inorder Traversal: ");
+                inorder(root);
+                printf("\n");
                 break;
             case 4:
-                printf("\nPostorder Traversal : ");
+                printf("Postorder Traversal: ");
                 postorder(root);
+                printf("\n");
                 break;
             case 5:
-                printf("\nLevel Order Traversal : ");
+                printf("Level Order Traversal: ");
                 levelorder(root);
+                printf("\n");
                 break;
-                case 6: 
-                printf("Enter value to search :");
-                scanf("%d",&value);
+            case 6:
+                printf("Enter value to search: ");
+                scanf("%d", &value);
                 TreeNode* result = search(root, value);
-                case 7:
-                printf("Enter value to delete :");
-                scanf("%d",&value);
-                TreeNode* last = findDeepest(root);
+                if(result != NULL)
+                    printf("Element Found !!\n");
+                    else
+                    printf("Element Not found !!\n");
+                    break;
+            case 7:
+                printf("Enter value to delete: ");
+                scanf("%d", &value);
+                delete(root, value);
                 break;
-                
             case 8:
                 exit(0);
-            default:
+                default:
                 printf("Invalid choice !!\n");
         }
     }
+    return 0;
 }
